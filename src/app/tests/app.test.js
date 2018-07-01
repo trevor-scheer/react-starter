@@ -1,10 +1,9 @@
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
+import {shallow} from 'enzyme';
 import App from '../app';
 
-describe('app', () => {
+describe('App', () => {
   it('renders', () => {
-    const render = TestRenderer.create(<App>Stuff</App>);
-    console.log(render.toJSON());
+    expect(() => shallow(<App />)).not.toThrow();
   });
 });

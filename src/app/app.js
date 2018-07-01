@@ -1,25 +1,39 @@
 // @flow
-import React, {type ComponentType} from 'react';
+import React, {
+  type ComponentType,
+  type StatelessFunctionalComponent,
+  type Node
+} from 'react';
 import styled from 'styled-components';
+import Button from './components/Button';
 
-type Props = {
-  children?: string
+type AppProps = {
+  children?: Node
 };
 
-type ButtonProps = {
-  children: string
-};
-
-const Button: ComponentType<ButtonProps> = styled.button`
-  padding: 20px 5px;
-  background-color: orange;
-  color: white;
+const StyledApp: ComponentType<AppProps> = styled.div`
+  width: 100vw;
+  height: 100vh;
 `;
 
-const App = ({children = 'App Works!'}: Props) => (
-  <div className="App">
-    <Button>{children}</Button>
-  </div>
+type PageContentProps = {
+  children?: Node
+};
+
+const PageContent: ComponentType<PageContentProps> = styled.div`
+  padding: 0 32px;
+`;
+
+const handleClick = e => {
+  console.log('clicked', e.currentTarget);
+};
+
+const App: StatelessFunctionalComponent<{}> = () => (
+  <StyledApp>
+    <PageContent>
+      <Button onClick={handleClick}>Click me</Button>
+    </PageContent>
+  </StyledApp>
 );
 
 export default App;
