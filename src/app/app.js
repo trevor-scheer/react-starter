@@ -1,6 +1,25 @@
-import React from "react";
-import "./app.scss";
+// @flow
+import React, {type ComponentType} from 'react';
+import styled from 'styled-components';
 
-const App = props => <div className="App">App works!</div>;
+type Props = {
+  children?: string
+};
+
+type ButtonProps = {
+  children: string
+};
+
+const Button: ComponentType<ButtonProps> = styled.button`
+  padding: 20px 5px;
+  background-color: orange;
+  color: white;
+`;
+
+const App = ({children = 'App Works!'}: Props) => (
+  <div className="App">
+    <Button>{children}</Button>
+  </div>
+);
 
 export default App;
